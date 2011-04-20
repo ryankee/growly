@@ -24,7 +24,7 @@ Uninstalling
 
 Usage
 -----
-    Usage: cmd [opts] command
+    Usage: growly [opts] command
 
     OPTIONS:
         -h    
