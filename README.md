@@ -20,9 +20,9 @@ Uninstalling
 
 Usage
 -----
-    Usage: cmd [args] command
+    Usage: cmd [opts] command
 
-    COMMANDS:
+    OPTIONS:
         -h    
             Show this message
         -v            

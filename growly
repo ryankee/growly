@@ -3,9 +3,9 @@ VERSION_NUMBER=0.1.0
 
 usage() {
 cat << EOF
-Usage: cmd [args] command
+Usage: cmd [opts] command
 
-COMMANDS:
+OPTIONS:
     -h    
         Show this message
     -v            
