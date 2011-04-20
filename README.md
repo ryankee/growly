@@ -1,5 +1,5 @@
 Growly
-===
+======
 Redirects output of a command to a growl notification
 
 Installation
@@ -7,7 +7,7 @@ Installation
     $ git clone git://github.com/ryankee/growly.git
 	$ cd growly
 	$ make install
-	$ growly --h
+	$ growly -h
 
 Installing growlnotify
 ----------------------
@@ -33,7 +33,5 @@ Usage
 Example Usage
 -------------
 	$ growly echo "it works!"
-    
     $ growly fab deploy
-
     $ growly ls
