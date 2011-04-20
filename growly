@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+VERSION_NUMBER=0.1.0
+
+usage() {
+cat << EOF
+Usage: cmd [args] command
+
+COMMANDS:
+    -h    
+        Show this message
+    -v            
+        Show version
+    -t
+        Set growlnotify title
+EOF
+}
+
+# Parse command line options.
+while getopts hvt: OPT; do
+    case "$OPT" in
+        h)
+            usage
+            exit 0
+            ;;
+        t)
+            TITLE=$2
+            ;;    
+        v)
+            echo "`basename $0` $VERSION_NUMBER"
+            exit 0
+            ;;
+        \?)
+            # getopts issues an error message
+            usage >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Remove the switches we parsed above.
+shift `expr $OPTIND - 1`
+
+# We want at least one non-option argument.
+# Remove this block if you don't need it.
+if [ $# -eq 0 ]; then
+    usage >&2
+    exit 1
+fi
+
+# Access additional arguments as usual through
+# variables $@, $*, $1, $2, etc. or using this loop:
+for PARAM; do
+    COMMAND="$COMMAND $PARAM"
+done
+
+# Set a default title if one doesn't exist
+if [ ! -n "$TITLE" ]; then
+    TITLE="$COMMAND : $HOSTNAME"
+fi
+
+# Run the growl notification
+growlnotify -m "`$COMMAND`" -t "$TITLE"
