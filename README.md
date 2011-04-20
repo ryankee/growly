@@ -11,6 +11,9 @@ Installation
 
 Installing growlnotify
 ----------------------
+You can install growlnotify from [Homebrew](http://mxcl.github.com/homebrew/) using
+    $ brew install growlnotify
+
 Visit [http://growl.info/documentation.php](http://growl.info/documentation.php) for installation help.
 
 Uninstalling
