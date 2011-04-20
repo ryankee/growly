@@ -38,4 +38,4 @@ Example Usage
 -------------
 	$ growly echo "it works!"
     $ growly fab deploy
-    $ growly ls
+    $ growly -t "My custom title" ls
