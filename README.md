@@ -24,18 +24,15 @@ Uninstalling
 
 Usage
 -----
-    Usage: growly [opts] command
+    Usage: growly [-hvt] command
 
-    OPTIONS:
-        -h    
-            Show this message
-        -v            
-            Show version
-        -t
-            Set growlnotify title
+    Options:
+        -t, --title     Set growlnotify title
+        -h, --help      Show this message
+        -v, --version   Show version
 
 Example Usage
 -------------
-	$ growly echo "it works!"
-    $ growly fab deploy
+    $ growly cap deploy
+	$ growly du -sh /tmp
     $ growly -t "My custom title" ls

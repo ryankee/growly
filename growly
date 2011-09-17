@@ -1,39 +1,42 @@
 #!/usr/bin/env bash
-VERSION_NUMBER=0.1.0
+VERSION_NUMBER=0.2.0
 
 usage() {
 cat << EOF
-Usage: growly [opts] command
+Usage: growly [-hvt] command
 
-OPTIONS:
-    -h    
-        Show this message
-    -v            
-        Show version
-    -t
-        Set growlnotify title
+Options:
+    -t, --title     Set growlnotify title
+    -h, --help      Show this message
+    -v, --version   Show version
 EOF
 }
 
+# Change long options to short
+for arg
+do
+    delim=""
+    case "$arg" in
+        --title) args="${args}-t ";;
+        --help) args="${args}-h ";;
+        --version) args="${args}-v ";;
+        *) [[ "${arg:0:1}" == "-" ]] || delim="\""
+            args="${args}${delim}${arg}${delim} ";;
+    esac
+done
+eval set -- $args
+
 # Parse command line options.
-while getopts hvt: OPT; do
-    case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        t)
-            TITLE=$2
-            ;;    
-        v)
-            echo "`basename $0` $VERSION_NUMBER"
-            exit 0
-            ;;
-        \?)
-            # getopts issues an error message
-            usage >&2
-            exit 1
-            ;;
+while getopts "hvt:" option; do
+    case "$option" in
+        t) TITLE=$OPTARG;;    
+        h) usage
+           exit 0;;
+        v) echo "`basename $0` $VERSION_NUMBER"
+           exit 0;;
+        # getopts issues an error message
+        \?) usage >&2
+            exit 1;;
     esac
 done
 
@@ -41,7 +44,6 @@ done
 shift `expr $OPTIND - 1`
 
 # We want at least one non-option argument.
-# Remove this block if you don't need it.
 if [ $# -eq 0 ]; then
     usage >&2
     exit 1
