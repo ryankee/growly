@@ -6,4 +6,3 @@ install:
 uninstall:
 	# remove symlink
 	rm /usr/local/bin/growly
-
