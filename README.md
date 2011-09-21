@@ -23,8 +23,8 @@ Example Usage
 	$ growly du -sh /tmp
     $ growly -t "My custom title" ls
 
-Installing yourself
-----------------------
+Don't like Homebrew? That's okay.
+---------------------------------
 Included in the repo is a `makefile` that allows you to install/uninstall without [Homebrew](http://mxcl.github.com/homebrew/)
 
 	$ make install
