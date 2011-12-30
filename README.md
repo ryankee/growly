@@ -15,15 +15,15 @@ You can install growly using the included `makefile`
 
 Usage
 -----
-	Usage: growly [-hvt] command
+  Usage: growly [-hvt] command
 
-	Options:
-		-t, --title     Set growl title
-		-h, --help      Show this message
-		-v, --version   Show version
+  Options:
+      -t, --title     Set growl title
+      -h, --help      Show this message
+      -v, --version   Show version
 
 Example Usage
 -------------
-	$ growly cap deploy
-	$ growly du -sh /tmp
-	$ growly -t "My custom title" ls
+  $ growly cap deploy
+  $ growly du -sh /tmp
+  $ growly -t "My custom title" ls
