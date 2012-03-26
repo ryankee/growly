@@ -25,6 +25,5 @@ it_fails_without_command() {
 }
 
 it_passes_with_only_a_command() {
-  alias growlnotify="echo"
   $CMD ls
 }
