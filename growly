@@ -36,7 +36,7 @@ while getopts "hvt:" option; do
            exit 0;;
         # getopts issues an error message
         \?) usage >&2
-            exit 1;;
+           exit 1;;
     esac
 done
 
@@ -54,6 +54,9 @@ fi
 for PARAM; do
     COMMAND="$COMMAND $PARAM"
 done
+
+# Remove first space from command
+COMMAND=${COMMAND:1:${#COMMAND}-1}
 
 # Set a default title if one doesn't exist
 if [ ! -n "$TITLE" ]; then
