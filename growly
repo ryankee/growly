@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-VERSION_NUMBER=0.2.0
+VERSION_NUMBER=0.2.1
 
 usage() {
 cat << EOF
-Usage: growly [-hvt] command
+Usage: growly [-hvts] command
 
 Options:
     -t, --title     Set growlnotify title
     -h, --help      Show this message
     -v, --version   Show version
+    -s, --sticky    Make the notification sticky
 EOF
 }
 
@@ -20,6 +21,7 @@ do
         --title) args="${args}-t ";;
         --help) args="${args}-h ";;
         --version) args="${args}-v ";;
+        --sticky) args="${args}-s ";;
         *) [[ "${arg:0:1}" == "-" ]] || delim="\""
             args="${args}${delim}${arg}${delim} ";;
     esac
@@ -27,9 +29,10 @@ done
 eval set -- $args
 
 # Parse command line options.
-while getopts "hvt:" option; do
+while getopts "hvst:" option; do
     case "$option" in
         t) TITLE=$OPTARG;;    
+        s) STICKY=1;;
         h) usage
            exit 0;;
         v) echo "`basename $0` $VERSION_NUMBER"
@@ -64,4 +67,8 @@ if [ ! -n "$TITLE" ]; then
 fi
 
 # Run the growl notification
-growlnotify -m "`$COMMAND`" -t "$TITLE"
+if [ $STICKY -eq 1 ]; then
+  growlnotify -s -m "`$COMMAND`" -t "$TITLE"
+else
+  growlnotify -m "`$COMMAND`" -t "$TITLE"
+fi

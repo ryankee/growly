@@ -22,11 +22,12 @@ Usage
         -t, --title     Set growl title
         -h, --help      Show this message
         -v, --version   Show version
+        -s, --sticky    Make the notification sticky
 
 Example Usage
 -------------
     $ growly cap deploy
-	$ growly du -sh /tmp
+    $ growly du -sh /tmp
     $ growly -t "My custom title" ls
 
 Don't like Homebrew? That's okay.

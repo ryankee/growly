@@ -1,6 +1,6 @@
 #!/usr/bin/env roundup
 
-USAGE_OUTPUT="Usage: growly [-hvt] command"
+USAGE_OUTPUT="Usage: growly [-hvts] command"
 CMD="$PWD/growly"
 
 describe "growly(1)"
